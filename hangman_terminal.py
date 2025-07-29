@@ -12,7 +12,7 @@ class WordBank:
                 valid_words.append(word)
         if len(valid_words) == 0:
             print("No valid words found")
-            exit(0)
+            exit()
         return random.choice(valid_words)
 
 class HangmanGame:
@@ -36,11 +36,11 @@ class HangmanGame:
             return
         self.guessed_letters.append(letter)
 
-        if letter in self.secret_word:
-            print("You've guessed that letter: " + letter)
-        else:
+        if letter not in self.secret_word:
             self.lives_left -= 1
             print("Wrong guess.")
+        else:
+            print("Correct guess.")
     def end_game(self):
         return self.lives_left == 0 or self.victory()
     def victory(self):
